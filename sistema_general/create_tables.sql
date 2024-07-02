@@ -1,6 +1,6 @@
 CREATE TABLE [servicio]
 (
-    [ser_id]          int PRIMARY KEY IDENTITY (1, 1),
+    [ser_id]          int PRIMARY KEY ,
     [ser_nombre]      varchar(50),
     [ser_descripcion] varchar(50),
     [ser_precio]      decimal,
@@ -11,7 +11,7 @@ GO
 
 CREATE TABLE [producto]
 (
-    [pro_id]          int PRIMARY KEY IDENTITY (1, 1),
+    [pro_id]          int PRIMARY KEY ,
     [pro_nombre]      nvarchar(255),
     [pro_descripcion] nvarchar(255),
     [pro_precio]      decimal
@@ -20,7 +20,7 @@ GO
 
 CREATE TABLE [sucursal]
 (
-    [suc_id]        int PRIMARY KEY IDENTITY (1, 1),
+    [suc_id]        int PRIMARY KEY ,
     [suc_nombre]    varchar(100),
     [suc_direccion] varchar(150),
     [suc_estado]    bit,
@@ -30,7 +30,7 @@ GO
 
 CREATE TABLE [empleado]
 (
-    [emp_id]       int PRIMARY KEY IDENTITY (1, 1),
+    [emp_id]       int PRIMARY KEY ,
     [emp_nombre]   varchar(50),
     [emp_apellido] varchar(50),
     [emp_creacion] datetime,
@@ -44,7 +44,7 @@ GO
 
 CREATE TABLE [cargo]
 (
-    [car_id]       int PRIMARY KEY IDENTITY (1, 1),
+    [car_id]       int PRIMARY KEY ,
     [car_nombre]   varchar(50) UNIQUE,
     [car_estado]   bit,
     [car_creacion] datetime
@@ -53,7 +53,7 @@ GO
 
 CREATE TABLE [departamento]
 (
-    [dep_id]       int PRIMARY KEY IDENTITY (1, 1),
+    [dep_id]       int PRIMARY KEY ,
     [dep_nombre]   varchar(50),
     [dep_creacion] datetime,
     [dep_estado]   bit
@@ -62,7 +62,7 @@ GO
 
 CREATE TABLE [beneficio]
 (
-    [ben_id]          int PRIMARY KEY IDENTITY (1, 1),
+    [ben_id]          int PRIMARY KEY ,
     [ben_nombre]      varchar(50),
     [ben_descripcion] varchar(100),
     [ben_estado]      bit,
@@ -72,7 +72,7 @@ GO
 
 CREATE TABLE [capacitacion]
 (
-    [cap_id]       int PRIMARY KEY IDENTITY (1, 1),
+    [cap_id]       int PRIMARY KEY ,
     [cap_tema]     nvarchar(255),
     [cap_ini]      datetime,
     [cap_fin]      datetime,
@@ -83,7 +83,7 @@ GO
 
 CREATE TABLE [evaluacion]
 (
-    [eva_id]       int PRIMARY KEY IDENTITY (1, 1),
+    [eva_id]       int PRIMARY KEY ,
     [eva_nombre]   varchar(50),
     [eva_ini]      datetime,
     [eva_fin]      datetime,
@@ -113,7 +113,7 @@ GO
 
 CREATE TABLE [ticket]
 (
-    [tic_id]       int PRIMARY KEY IDENTITY (1, 1),
+    [tic_id]       int PRIMARY KEY ,
     [tic_numero]   varchar(20),
     [tic_creacion] datetime,
     [tic_estado]   bit,
@@ -125,14 +125,13 @@ CREATE TABLE [ticket_empleado]
 (
     [tic_id]   int,
     [emp_id]   int,
-    [tie_tipo] varchar(50),
-    constraint CH_tie_tipo check (tie_tipo in ('resolutor', 'usuario'))
+    [tie_tipo] varchar(10)
 )
 GO
 
 CREATE TABLE [soporte]
 (
-    [sop_id]       int PRIMARY KEY IDENTITY (1, 1),
+    [sop_id]       int PRIMARY KEY ,
     [sop_problema] nvarchar(255),
     [sop_solucion] nvarchar(255),
     [sop_ini]      datetime,
@@ -145,7 +144,7 @@ GO
 
 CREATE TABLE [actualizacion]
 (
-    [act_id]       int PRIMARY KEY IDENTITY (1, 1),
+    [act_id]       int PRIMARY KEY ,
     [act_sistema]  varchar(30),
     [act_version]  varchar(30),
     [act_fecha]    datetime,
@@ -157,7 +156,7 @@ GO
 
 CREATE TABLE [inventario_hardware]
 (
-    [int_id]       int PRIMARY KEY IDENTITY (1, 1),
+    [int_id]       int PRIMARY KEY ,
     [inh_tipo]     varchar(30),
     [inh_marca]    varchar(30),
     [inh_modelo]   varchar(30),
@@ -170,7 +169,7 @@ GO
 
 CREATE TABLE [inventario_softw]
 (
-    [softwareId]     int PRIMARY KEY IDENTITY (1, 1),
+    [softwareId]     int PRIMARY KEY ,
     [ins_tipo]       varchar(30),
     [ins_licencia]   varchar(30),
     [ins_expiracion] datetime,
@@ -181,7 +180,7 @@ GO
 
 CREATE TABLE [contabilidad]
 (
-    [con_id]            int PRIMARY KEY IDENTITY (1, 1),
+    [con_id]            int PRIMARY KEY ,
     [con_tipo_registro] nvarchar(255),
     [con_descripcion]   nvarchar(255),
     [con_creacion]      datetime,
@@ -192,7 +191,7 @@ GO
 
 CREATE TABLE [transaccion]
 (
-    [tra_id]       int PRIMARY KEY IDENTITY (1, 1),
+    [tra_id]       int PRIMARY KEY ,
     [tra_fecha]    datetime,
     [tra_monto]    decimal,
     [tra_tipo]     nvarchar(255),
@@ -204,7 +203,7 @@ GO
 
 CREATE TABLE [factura]
 (
-    [fac_id]            int PRIMARY KEY IDENTITY (1, 1),
+    [fac_id]            int PRIMARY KEY ,
     [fac_proveedor]     nvarchar(255),
     [fac_fecha_emision] datetime,
     [fac_fecha_pago]    datetime,
@@ -216,7 +215,7 @@ GO
 
 CREATE TABLE [presupuesto]
 (
-    [pre_id]          int PRIMARY KEY IDENTITY (1, 1),
+    [pre_id]          int PRIMARY KEY ,
     [pre_anio]        int,
     [pre_monto_total] decimal,
     [pre_creacion]    datetime,
@@ -227,7 +226,7 @@ GO
 
 CREATE TABLE [impuesto]
 (
-    [imp_id]            int PRIMARY KEY IDENTITY (1, 1),
+    [imp_id]            int PRIMARY KEY ,
     [imp_tipo_impuesto] nvarchar(255),
     [imp_periodo]       nvarchar(255),
     [imp_monto]         decimal,
@@ -239,7 +238,7 @@ GO
 
 CREATE TABLE [finanza]
 (
-    [fin_id]             int PRIMARY KEY IDENTITY (1, 1),
+    [fin_id]             int PRIMARY KEY ,
     [fin_tipo_operacion] varchar(30),
     [fin_descripcion]    varchar(100),
     [fin_creacion]       datetime,
@@ -250,7 +249,7 @@ GO
 
 CREATE TABLE [planificacion]
 (
-    [pla_id]         int PRIMARY KEY IDENTITY (1, 1),
+    [pla_id]         int PRIMARY KEY ,
     [pla_objetivo]   varchar(30),
     [pla_estrategia] varchar(30),
     [pla_creacion]   datetime,
@@ -261,7 +260,7 @@ GO
 
 CREATE TABLE [analisis]
 (
-    [ana_id]        int PRIMARY KEY IDENTITY (1, 1),
+    [ana_id]        int PRIMARY KEY ,
     [ana_resultado] varchar(30),
     [ana_creacion]  datetime,
     [ana_estado]    bit,
@@ -271,7 +270,7 @@ GO
 
 CREATE TABLE [riesgo]
 (
-    [rie_id]         int PRIMARY KEY IDENTITY (1, 1),
+    [rie_id]         int PRIMARY KEY ,
     [rie_tipo]       varchar(30),
     [rie_mitigacion] varchar(50),
     [rie_creacion]   datetime,
@@ -282,7 +281,7 @@ GO
 
 CREATE TABLE [inversiones]
 (
-    [inv_id]               int PRIMARY KEY IDENTITY (1, 1),
+    [inv_id]               int PRIMARY KEY ,
     [fin_id]               int,
     [inv_tipo_inversion]   varchar(20),
     [inv_retorno_esperado] decimal,
@@ -294,7 +293,7 @@ GO
 
 CREATE TABLE [compra]
 (
-    [com_id]          int PRIMARY KEY IDENTITY (1, 1),
+    [com_id]          int PRIMARY KEY ,
     [com_descripcion] nvarchar(255),
     [com_fecha_orden] datetime,
     [com_creacion]    datetime,
@@ -306,7 +305,7 @@ GO
 
 CREATE TABLE [provedor]
 (
-    [prr_id]       int PRIMARY KEY IDENTITY (1, 1),
+    [prr_id]       int PRIMARY KEY ,
     [prr_nombre]   varchar(30),
     [prr_rut]      varchar(30),
     [prr_contacto] varchar(30),
@@ -318,7 +317,7 @@ GO
 
 CREATE TABLE [orden_compra]
 (
-    [orc_id]       int PRIMARY KEY IDENTITY (1, 1),
+    [orc_id]       int PRIMARY KEY ,
     [orc_cantidad] int,
     [orc_creacion] datetime,
     [orc_estado]   bit,
@@ -336,7 +335,7 @@ GO
 
 CREATE TABLE [venta]
 (
-    [ven_id]     int PRIMARY KEY IDENTITY (1, 1),
+    [ven_id]     int PRIMARY KEY ,
     [ven_num]    int ,
     [ven_total]  decimal,
     [ven_create] datetime,
@@ -369,7 +368,7 @@ GO
 
 CREATE TABLE [cliente]
 (
-    [cli_id]        int PRIMARY KEY IDENTITY (1, 1),
+    [cli_id]        int PRIMARY KEY ,
     [cli_nombre]    nvarchar(255),
     [cli_direccion] nvarchar(255),
     [cli_telefono]  nvarchar(255)
@@ -378,7 +377,7 @@ GO
 
 CREATE TABLE [orden_trabajo]
 (
-    [ort_id]        int PRIMARY KEY IDENTITY (1, 1),
+    [ort_id]        int PRIMARY KEY ,
     [ort_fecha_ini] datetime,
     [ort_fecha_fin] datetime,
     [ort_total]     decimal,
@@ -415,7 +414,7 @@ GO
 
 CREATE TABLE [vehiculo]
 (
-    [veh_id]     int PRIMARY KEY IDENTITY (1, 1),
+    [veh_id]     int PRIMARY KEY ,
     [veh_modelo] nvarchar(255),
     [veh_marca]  nvarchar(255),
     [veh_ano]    int
@@ -424,13 +423,12 @@ GO
 
 CREATE TABLE [campania]
 (
-    [cam_id]          int PRIMARY KEY IDENTITY (1, 1),
+    [cam_id]          int PRIMARY KEY ,
     [cam_nombre]      nvarchar(255),
     [cam_inicio]      datetime,
     [cam_fin]         datetime,
-    [cam_tipo]        varchar(20),
+    [cam_tipo]        varchar(10) ,
     [cam_presupuesto] decimal
-        constraint CH_CAM_TIPO check (cam_tipo in ('LOCAL', 'DIGITAL'))
 )
 GO
 
@@ -452,7 +450,7 @@ GO
 
 CREATE TABLE [promocion]
 (
-    [prm_id]            int PRIMARY KEY IDENTITY (1, 1),
+    [prm_id]            int PRIMARY KEY ,
     [prm_descripcion]   nvarchar(255),
     [prm_descuento]     decimal,
     [prm_multiplicador] int
@@ -461,7 +459,7 @@ GO
 
 CREATE TABLE [pedido]
 (
-    [ped_id]       int PRIMARY KEY IDENTITY (1, 1),
+    [ped_id]       int PRIMARY KEY ,
     [ped_creacion] datetime,
     [ped_estado]   bit,
     [emp_id]       int,
@@ -474,7 +472,7 @@ GO
 
 CREATE TABLE [transporte]
 (
-    [trn_id]        int PRIMARY KEY IDENTITY (1, 1),
+    [trn_id]        int PRIMARY KEY ,
     [trn_tipo]      varchar(30),
     [trn_capacidad] int
 )
@@ -482,7 +480,7 @@ GO
 
 CREATE TABLE [ruta]
 (
-    [rut_id]              int PRIMARY KEY IDENTITY (1, 1),
+    [rut_id]              int PRIMARY KEY ,
     [rut_origen]          nvarchar(255),
     [rut_destino]         nvarchar(255),
     [rut_tiempo_estimado] datetime
@@ -491,7 +489,7 @@ GO
 
 CREATE TABLE [inventario]
 (
-    [inv_id]        int PRIMARY KEY IDENTITY (1, 1),
+    [inv_id]        int PRIMARY KEY ,
     [pro_id]        int,
     [inv_cantidad]  int,
     [inv_ubicacion] varchar(30),
@@ -502,7 +500,7 @@ GO
 
 CREATE TABLE [auditoria]
 (
-    [aud_id]        int PRIMARY KEY IDENTITY (1, 1),
+    [aud_id]        int PRIMARY KEY ,
     [aud_fecha]     datetime,
     [aud_resultado] nvarchar(255),
     [aud_creacion]  datetime,
@@ -513,7 +511,7 @@ GO
 
 CREATE TABLE [ajuste]
 (
-    [aju_id]       int PRIMARY KEY IDENTITY (1, 1),
+    [aju_id]       int PRIMARY KEY ,
     [inv_id]       int,
     [aju_tipo]     varchar(30),
     [aju_cantidad] int,
@@ -533,7 +531,7 @@ GO
 
 CREATE TABLE [dimTiempo]
 (
-    [dit_id]           int PRIMARY KEY IDENTITY (1, 1),
+    [dit_id]           int PRIMARY KEY ,
     [dit_anio]         int,
     [dit_mes]          int,
     [dit_semana]       int,
